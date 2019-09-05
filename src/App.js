@@ -1,28 +1,17 @@
-import React, { useReducer } from 'react'
+import React from 'react'
 import Display from './components/Display'
 import Buttons from './components/Buttons'
-import { BUTTON_LIST } from './Stuff'
+import useAppState from './useAppState'
 import './App.css'
 
 function App() {
-  const initialState = {
-    currentValue: 0,
-    nextValue: null,
-    operator: null
-  }
-  const reducer = (state, action) => {
-    const actions = {
-
-    }
-    return actions[action.type](action.value)
-  }
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useAppState()
   return (
     <div className="App">
       <Display state={state}/>
       <Buttons dispatch={dispatch}/>
     </div>
-  );
+  )
 }
 
 export default App
