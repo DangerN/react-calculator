@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.display {
+  height: 200px;
+  display: flex;
+  flex-flow: column;
+}
+
+.display > * {
+  margin: 20px;
+}
+
+.base {
+  background-color: green;
+}
+.displayValue {
+  background-color: lightblue;
+}
+.operator {
+  background-color: lightgrey;
+}

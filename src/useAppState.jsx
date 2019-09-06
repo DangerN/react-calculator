@@ -5,21 +5,23 @@ const useAppState = () => {
   const initialState = {
     displayValue: '0',
     baseValue: '',
-    operator: ''
+    operator: '',
   }
   const reducer = (state, action) => {
     console.log(state);
     const actions = {
       'number': (value) => {
         let newVal = state.displayValue + value
-        return {...state, displayValue: newVal.replace(/^0/, '')}
+        return state.displayValue === state.baseValue
+          ? {...state, displayValue: value, baseValue: state.displayValue}
+          : {...state, displayValue: /^\d+\.?\d?\d?\d?(?=\d*$)/.exec(newVal.replace(/^0/, ''))[0]}
       },
       'operator': (value) => {
         const calculate = () => {
-          CalcStuff.Operations[state.operator](state.baseValue, state.displayValue)
+          return CalcStuff.Operations[state.operator](state.baseValue, state.displayValue)
         }
         return !state.operator
-          ? {...state, operator: value}
+          ? {...state, operator: value, baseValue: state.displayValue}
           : {
               baseValue: calculate(),
               displayValue: calculate(),
@@ -27,7 +29,11 @@ const useAppState = () => {
             }
       },
       '=': () => {
-
+        return {
+          baseValue: '',
+          displayValue: CalcStuff.Operations[state.operator](state.baseValue, state.displayValue),
+          operator: ''
+        }
       },
       'c': () => {
         return {displayValue: 0, nextValue: null, operator: null}

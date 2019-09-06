@@ -6,10 +6,10 @@ const DISPATCH_TYPE = key => key.replace(/[0-9]/, 'number').replace(/\+|-|\*|\//
 
 const CalcStuff = {
   Operations: {
-    '+': (a, b) => a + b,
-    '-': (a, b) => a - b,
-    '/': (a, b) => a / b,
-    '*': (a, b) => a * b,
+    '+': (a, b) => parseInt(a, 10) + parseInt(b, 10),
+    '-': (a, b) => parseInt(a, 10) - parseInt(b, 10),
+    '/': (a, b) => parseInt(a, 10) / parseInt(b, 10),
+    '*': (a, b) => parseInt(a, 10) * parseInt(b, 10),
   },
   MakeButtons: (dispatch, keys = [...DEFAULT_KEYS]) => {
     const keysToButtons = (keyList, buttonList=[]) => {
