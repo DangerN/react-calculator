@@ -18,6 +18,7 @@ const CalcStuff = {
       buttonList.push(
         <input type='button'
           className='button'
+          id={'d'+key}
           onClick={()=>dispatch({type: DISPATCH_TYPE(key), value: key})}
           value={key}
           key={key} />

@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root, .App {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.display {
+  padding: 1rem 2rem;
+  height: 15%;
+  width: 50%;
+  display: grid;
+  grid-template:
+    "operator main" 1fr
+    "base main" 1fr
+    / 1fr 5fr;
+  > .displayValue {
+      grid-area: main;
+      justify-self: end;
+      align-self: center;
+  }
+  > .operator {
+    grid-area: operator;
+    font-size: 1.5rem;
+  }
+  > .base {
+    grid-area: base;
+    font-size: 1.5rem;
+  }
+}
+
+.buttons {
+  height: 50%;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    "n n n plus"
+    "n n n minus"
+    "n n n multiply"
+    "equal equal zero divide"
+    "equal equal zero clear";
+}
+
+input {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  :focus {
+    background: green;
+  }
+}
+
+#d\+ {
+  grid-area: plus;
+}
+
+#d\- {
+  grid-area: minus;
+}
+
+#d\* {
+  grid-area: multiply;
+}
+
+#d\/ {
+  grid-area: divide;
+}
+
+#d\= {
+  grid-area: equal;
+}
+
+#dc {
+  grid-area: clear;
+}
+
+#d0 {
+  grid-area: zero
+}

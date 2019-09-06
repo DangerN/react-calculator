@@ -2,7 +2,6 @@ import React from 'react'
 import Display from './components/Display'
 import Buttons from './components/Buttons'
 import useAppState from './useAppState'
-import './App.css'
 
 function App() {
   const [state, dispatch] = useAppState()
